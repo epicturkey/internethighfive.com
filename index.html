@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Turk">
+    <meta name="description" content="Adding a degree of fun to remote high fives">
+    <meta property="og:title" content="Internet High Five">
+    <meta property="og:image" content="https://www.internethighfive.com/images/HAND-LEFT-W-TEXT.png">
+    <meta property="og:description" content="High fives for all in the age of remote-first. Give your remote coworkers the high five they deserve!">
+    <meta property="og:url" content="https://www.internethighfive.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Internet High 5</title>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function play_audio() {
+            try {
+                var audio = document.getElementById("sound_effect");
+                audio.play();
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+        $(function() {
+            $(".high5").click(function() {
+                play_audio();
+                var el = $(this);
+                setTimeout(function() {
+                    el.addClass("flash");
+                    setTimeout(function() {
+                        el.removeClass("flash");
+                    }, 250);
+                }, 100);
+            });
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        .fill {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+        }
+        .container {
+            height: 100%;
+            position: relative;
+        }
+        .container .high5 {
+            height: 100%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            min-height: 480px;
+            position: absolute;
+        }
+        .container .high5:hover {
+            filter: invert(21%) sepia(8%) saturate(43%) hue-rotate(359deg) brightness(95%) contrast(101%) drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+            cursor: pointer;
+        }
+        .flash {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(108deg) brightness(104%) contrast(105%) !important;
+        }
+    </style>
+  </head>
+
+  <body class="text-center">
+    <div class="container fill">
+        <img class="img-fluid high5" src="images/hand-left-w-text.svg" />
+    </div>
+    <audio id="sound_effect" class="audio_player" preload="auto" style="display: none;" type="audio/wav" src="sfx/clap.mp3"></audio>      
+  </body>
+</html>
