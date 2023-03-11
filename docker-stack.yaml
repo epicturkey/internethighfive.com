@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  internethighfive-web:
+    image: localhost:5000/epic/internethighfive
+    ports:
+      - "10010:10010"
+    environment:
+      VIRTUAL_HOST: www.internethighfive.com,internethighfive.com # Enviroment variable needed for nginx proxy
+      LETSENCRYPT_HOST: www.internethighfive.com,internethighfive.com # Enviroment variables needed for Let's Encrypt companion
+      LETSENCRYPT_EMAIL: jonathanturk@outlook.com
+    networks:
+      - nginx-proxy
+
+networks:
+  app:
+  nginx-proxy:
+    external:
+      name: epic_nginx-proxy
